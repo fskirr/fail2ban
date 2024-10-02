@@ -1,0 +1,71 @@
+[nginx-http-auth]
+enabled = true
+filter = nginx-http-auth
+logpath = /var/log/nginx/error.log
+maxretry = 3
+bantime = -1
+findtime = 600
+action = iptables[name=HTTP, port=http, protocol=tcp]
+
+[nginx-ddos]
+enabled = true
+filter = nginx-ddos
+logpath = /var/log/nginx/access.log
+maxretry = 20
+bantime = 7200
+findtime = 300
+action = iptables[name=HTTP, port=http, protocol=tcp]
+ 
+[nginx-php-injection]
+enabled = true
+filter = nginx-php-injection
+logpath = /var/log/nginx/access.log
+maxretry = 3
+bantime = -1
+findtime = 600
+action = iptables[name=HTTP, port=http, protocol=tcp]
+ 
+[nginx-xmlrpc]
+enabled = true
+filter = nginx-xmlrpc
+logpath = /var/log/nginx/access.log
+maxretry = 3
+bantime = -1
+findtime = 600
+action = iptables[name=HTTP, port=http, protocol=tcp]
+ 
+[nginx-sensitive-files]
+enabled = true
+filter = nginx-sensitive-files
+logpath = /var/log/nginx/access.log
+maxretry = 3
+bantime = -1
+findtime = 3600
+action = iptables[name=HTTP, port=http, protocol=tcp]
+
+#[nginx-sql-injection]
+#enabled = true
+#filter = nginx-sql-injection
+#logpath = /var/log/nginx/access.log
+#maxretry = 3
+#bantime = 7200
+#findtime = 600
+#action = iptables[name=HTTP, port=http, protocol=tcp]
+
+[nginx-admin-areas]
+enabled = true
+filter = nginx-admin-areas
+logpath = /var/log/nginx/access.log
+maxretry = 3
+bantime = -1
+findtime = 600
+action = iptables[name=HTTP, port=http, protocol=tcp]
+
+[nginx-excessive-requests]
+enabled = true
+filter = nginx-excessive-requests
+logpath = /var/log/nginx/access.log
+maxretry = 10
+bantime = -1
+findtime = 300
+action = iptables[name=HTTP, port=http, protocol=tcp]
